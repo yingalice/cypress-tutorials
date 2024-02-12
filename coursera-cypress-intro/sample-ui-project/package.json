@@ -1,0 +1,14 @@
+{
+  "name": "sample-ui-project",
+  "version": "1.0.0",
+  "description": "This is my first cypress project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alice Ying",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.6.4"
+  }
+}
