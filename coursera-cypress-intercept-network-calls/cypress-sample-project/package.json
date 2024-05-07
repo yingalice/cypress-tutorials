@@ -1,0 +1,14 @@
+{
+  "name": "cypress-sample-project",
+  "version": "1.0.0",
+  "description": "API test project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alice Ying",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.6.6"
+  }
+}
