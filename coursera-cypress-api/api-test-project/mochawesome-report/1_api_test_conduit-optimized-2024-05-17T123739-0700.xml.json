@@ -1,0 +1,160 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-05-17T19:37:39.266Z",
+    "end": "2024-05-17T19:37:39.656Z",
+    "duration": 390,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "4bdc5752-5218-45be-9a96-f7f661d6395f",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api-testing\\1_api_test_conduit-optimized.cy.js",
+      "file": "cypress\\e2e\\api-testing\\1_api_test_conduit-optimized.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2b52719e-2932-4d20-a642-962794db46e0",
+          "title": "API Testing of Conduit App",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "GET Tags API",
+              "fullTitle": "API Testing of Conduit App GET Tags API",
+              "timedOut": null,
+              "duration": 80,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Use custom function from support/restClient.js\n_restClient.restClient.sendGetRequest('http://localhost:3000/api/tags').then(response => {\n  cy.log(JSON.stringify(response));\n  expect(response.status).to.equal(200);\n  expect(response.body.tags).to.contain('cypress');\n});",
+              "err": {},
+              "uuid": "b0981a75-5d4b-4dbb-9024-8e4c1be3194f",
+              "parentUUID": "2b52719e-2932-4d20-a642-962794db46e0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Add article",
+              "fullTitle": "API Testing of Conduit App Add article",
+              "timedOut": null,
+              "duration": 78,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_restClient.restClient.sendPostRequest('http://localhost:3000/api/articles', {\n  Authorization: 'Token ' + token\n}, {\n  article: {\n    title: 'Cypress articles from Cypress test',\n    description: 'This is regarding Cypress',\n    body: 'Cypress is a test automation tool.\\n\\nIt is very powerful.',\n    tagList: ['Cypress', 'Test']\n  }\n}).then(response => {\n  expect(response.status).to.equal(200);\n});",
+              "err": {},
+              "uuid": "0f6ceae5-32b0-467c-b3a9-db4de3dd90af",
+              "parentUUID": "2b52719e-2932-4d20-a642-962794db46e0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Edit Article",
+              "fullTitle": "API Testing of Conduit App Edit Article",
+              "timedOut": null,
+              "duration": 93,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let slug;\ncy.request({\n  method: 'POST',\n  url: 'http://localhost:3000/api/articles',\n  headers: {\n    Authorization: 'Token ' + token\n  },\n  body: {\n    article: {\n      title: 'Cypress articles from Cypress test',\n      description: 'This is regarding Cypress',\n      body: 'Cypress is a test automation tool.\\n\\nIt is very powerful.',\n      tagList: ['Cypress', 'Test']\n    }\n  }\n}).then(response => {\n  expect(response.status).to.equal(200);\n  slug = response.body.article.slug;\n  cy.log(slug);\n  // Edit article, using the saved slug\n  cy.request({\n    method: 'PUT',\n    url: 'http://localhost:3000/api/articles/' + slug,\n    headers: {\n      Authorization: 'Token ' + token\n    },\n    body: {\n      article: {\n        title: 'Cypress articles from Cypress test - edited',\n        description: 'This is regarding Cypress - edited',\n        body: 'Cypress is a test automation tool.\\n\\nIt is very powerful.',\n        tagList: ['Cypress', 'Test']\n      }\n    }\n  }).then(response => {\n    expect(response.status).to.equal(200);\n    expect(response.body.article.title).to.equal('Cypress articles from Cypress test - edited');\n  });\n});",
+              "err": {},
+              "uuid": "ecc3a1b8-3451-4fc7-8ac0-2187006f0fcc",
+              "parentUUID": "2b52719e-2932-4d20-a642-962794db46e0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Delete Article",
+              "fullTitle": "API Testing of Conduit App Delete Article",
+              "timedOut": null,
+              "duration": 95,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let slug;\ncy.request({\n  method: 'POST',\n  url: 'http://localhost:3000/api/articles',\n  headers: {\n    Authorization: 'Token ' + token\n  },\n  body: {\n    article: {\n      title: 'Cypress articles from Cypress test',\n      description: 'This is regarding Cypress',\n      body: 'Cypress is a test automation tool.\\n\\nIt is very powerful.',\n      tagList: ['Cypress', 'Test']\n    }\n  }\n}).then(response => {\n  expect(response.status).to.equal(200);\n  slug = response.body.article.slug;\n  cy.log(slug);\n  // Delete article\n  cy.request({\n    method: 'DELETE',\n    url: 'http://localhost:3000/api/articles/' + slug,\n    headers: {\n      Authorization: 'Token ' + token\n    }\n  }).then(response => {\n    expect(response.status).to.equal(204);\n    // Confirm article is gone\n    cy.request({\n      method: 'GET',\n      url: 'http://localhost:3000/api/articles/' + slug,\n      failOnStatusCode: false\n    }).then(response => {\n      expect(response.status).to.equal(404);\n    });\n  });\n});",
+              "err": {},
+              "uuid": "e1f50619-0511-4c82-8274-249f41f8a60a",
+              "parentUUID": "2b52719e-2932-4d20-a642-962794db46e0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b0981a75-5d4b-4dbb-9024-8e4c1be3194f",
+            "0f6ceae5-32b0-467c-b3a9-db4de3dd90af",
+            "ecc3a1b8-3451-4fc7-8ac0-2187006f0fcc",
+            "e1f50619-0511-4c82-8274-249f41f8a60a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 346,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "[name]-[datetime].xml",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportFilename": "[name]-[datetime].xml",
+        "quiet": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

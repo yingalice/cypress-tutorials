@@ -1,0 +1,17 @@
+{
+  "name": "api-test-project",
+  "version": "1.0.0",
+  "description": "API test basics",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alice Ying",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.9.0"
+  },
+  "dependencies": {
+    "mochawesome": "^7.1.3"
+  }
+}
