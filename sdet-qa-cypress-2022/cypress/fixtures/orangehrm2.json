@@ -1,0 +1,22 @@
+{
+  "logins": [
+    {
+      "title": "Test 1 - Valid Credentials",
+      "username": "Admin",
+      "password": "admin123",
+      "expected": "Dashboard"
+     },
+     {
+      "title": "Test 2 - Invalid Credentials",
+      "username": "xyz",
+      "password": "admin123",
+      "expected": "Invalid credentials"
+     },
+     {
+      "title": "Test 3 - Invalid Credentials",
+      "username": "Admin",
+      "password": "xyz",
+      "expected": "Invalid credentials"
+     }
+  ]
+}

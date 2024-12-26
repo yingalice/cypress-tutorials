@@ -1,2 +1,2 @@
-- Completed various Cypress projects in Coursera
+- Completed various Cypress projects/tutorials on Coursera/YouTube
 - Each project folder has an individual README.md
